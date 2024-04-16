@@ -3,6 +3,7 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\InterestPointController;
+use App\Http\Controllers\PointController;
 
 /*
 |--------------------------------------------------------------------------
@@ -21,10 +22,8 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 Route::get('/interest-points', [InterestPointController::class, 'index']);
 Route::post('/interest-points', [InterestPointController::class, 'store']);
-Route::apiResource('points', 'PointController');
-Route::apiResource('interest-points', 'InterestPointController');
-Route::middleware('auth:sanctum')->group(function () {
-    Route::apiResource('points', 'PointController');
-});
+Route::get('points', [PointController::class, 'index']);
+Route::post('points', [PointController::class, 'store']);
+
 
 

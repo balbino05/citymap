@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Point;
 use Illuminate\Http\Request;
 
 class PointController extends Controller
@@ -11,7 +12,8 @@ class PointController extends Controller
      */
     public function index()
     {
-        //
+
+        return Point::all();
     }
 
     /**
@@ -19,7 +21,10 @@ class PointController extends Controller
      */
     public function create()
     {
-        //
+
+        $point = InterestPoint::create($request->all());
+        return response()->json($point, 201);
+
     }
 
     /**
@@ -27,12 +32,12 @@ class PointController extends Controller
      */
     public function store(Request $request)
     {
+        echo $request;
         $validated = $request->validate([
             'name' => 'required|max:255',
             'address' => 'required',
             'latitude' => 'required|numeric',
             'longitude' => 'required|numeric',
-            'category' => 'required'
         ]);
 
         $point = Point::create($validated);
