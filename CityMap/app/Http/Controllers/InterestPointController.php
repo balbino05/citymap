@@ -20,14 +20,15 @@ class InterestPointController extends Controller
 
     public function category(Request $request)
     {
+        echo $request->category;
         $category = InterestPoint::where('category','LIKE',$request->category)->get();
-        return response()->json($category, 201);
+        return response()->json($category, 200);
     }
 
     public function categoryPoints(Request $request)
     {
         $points = InterestPoint::select('category')->distinct()->get();
-        return response()->json($points, 201);
+        return response()->json($points, 200);
     }
 
 }
