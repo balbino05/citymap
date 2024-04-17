@@ -20,8 +20,10 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::get('/interest-points', [InterestPointController::class, 'index']);
-Route::post('/interest-points', [InterestPointController::class, 'store']);
+Route::get('interest-points', [InterestPointController::class, 'index']);
+Route::post('interest-points', [InterestPointController::class, 'store']);
+Route::get('category', [InterestPointController::class, 'category']);
+Route::get('category-points', [InterestPointController::class, 'categoryPoints']);
 Route::get('points', [PointController::class, 'index']);
 Route::post('points', [PointController::class, 'store']);
 
